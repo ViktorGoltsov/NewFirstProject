@@ -38,6 +38,7 @@ public class HW1 {
                 "____88888888_____1___88888888___________\n" +
                 "_____888888___________888888____________\n" +
                 "_______________________8888_____________\n");
+        System.out.println("Hi");
     };
 
     //https://java-lessons.ru/strings/newline - еще один способ переноса с System.lineSeparator()
