@@ -1,5 +1,7 @@
 package HW;
 
+import java.util.Locale;
+
 public class HW4 {
 
     public static void main(String[] args) {
@@ -14,7 +16,8 @@ public class HW4 {
 
         //2  необходимо вывести максимальное значение массива.
         int[] array2 = {9, 2, 6, 4, 5, 12, 7, 8, 6};
-        int maxValueOfArray = array2[0];
+    //    int maxValueOfArray = array2[0];
+        int maxValueOfArray = Integer.MIN_VALUE; //или вот такую строку вместо предыдущей на случай прихода пустого массива
         for (int i = 0; i < array2.length; i = i + 1) {
             if (array2[i] > maxValueOfArray) {
                 maxValueOfArray = array2[i];
@@ -25,7 +28,7 @@ public class HW4 {
         //3 необходимо вывести минимальное значение массива.
 
         int[] array3 = {9, 2, 6, 4, 5, 12, 7, 8, 6};
-        int minValueOfArray = array3[0];
+        int minValueOfArray = Integer.MAX_VALUE;
         for (int i = 0; i < array3.length; i = i + 1) {
             if (array3[i] < minValueOfArray) {
                 minValueOfArray = array3[i];
@@ -36,7 +39,7 @@ public class HW4 {
         //4 необходимо вывести среднее арифметическое всех значений массива.
         int[] array4 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int sumOfElements = 0;
-        double avgOfErray4 = 0;
+        double avgOfErray4;
         for (int i = 0; i < array4.length; i = i +1) {
             sumOfElements = sumOfElements + array4[i];
         }
@@ -76,12 +79,24 @@ public class HW4 {
         }
         System.out.println(nOfElements7);
 
+        //короткий способ //
+        int[][] array77 = {{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}};
+        int nOfElements77 = 0;
+        for (int i = 0; i < array77.length; i = i + 1) {
+                nOfElements77 = nOfElements77 + array77[i].length;
+        }
+        System.out.println(nOfElements77);
+
+
         //4.2
 
-        String s = "Перестановочный алгоритм быстрого действия";
+
         //1
         // необходимо вывести все буквы “о” из этой строки.
         //Для указанной строки ответ будет “ооооо” (или в столбик)
+
+        // неправильный способ - ухудшает производительность
+        String s = "Перестановочный алгоритм быстрого действия";
         char [] array8 = s.toCharArray();
         for (int i = 0; i < array8.length; i = i + 1) {
             if (array8[i] == 'о') {
@@ -90,14 +105,23 @@ public class HW4 {
         }
         System.out.println();
 
+        // правильный способ
+        String ss = "Перестановочный алгоритм быстрого действия";
+        for (int i = 0; i < ss.length(); i = i + 1) {
+            if (ss.charAt(i) == 'о') {
+                System.out.print(ss.charAt(i));
+            }
+        }
+        System.out.println();
+
        //2
        // необходимо подсчитать количество букв “е” в строке.
        // Для указанной строки ответ будет 4.
         String s2 = "Перевыборы выбранного президента";
-        char [] array9 = s2.toCharArray();
+        //char [] array9 = s2.toCharArray();  неправильный способ - ухудшает производительность
         int numOfe = 0;
-        for (int i = 0; i < array9.length; i = i + 1) {
-            if (array9[i] == 'е') {
+        for (int i = 0; i < s2.length(); i = i + 1) {
+            if (s2.charAt(i) == 'е') {
                 numOfe = numOfe + 1;
             }
         }
@@ -108,16 +132,23 @@ public class HW4 {
         //необходимо вывести индексы начала всех подстрок - “рит”, независимо от регистра.
         //Для указанной строки ответ будет 6, 15, 29.
         String s3 = "Посмотрите как Рите нравится ритм";
-        int index =  0;
-        char [] arr9 = s3.toCharArray();
-        for (int i = 0; i < arr9.length-2; i = i + 1) {
-                                        //-2 от длины массива отнимаем, чтобы в проверке if не выйти за границы строки
-            String str9 = s3.substring(i, i + 3);       // нам нужно +2 р(+и+т), но пишем 3, потому что синтаксис
-                                             // метода такой (будет возвращать символы до номера индеса -1 от указанного
+        int longOfStrToFind = ("рит").length();
+       // char [] arr9 = s3.toCharArray(); -  неправильный способ - ухудшает производительность
+        for (int i = 0; i < s3.length()-longOfStrToFind+1; i = i + 1) {   // от длины массива отнимаем длину куска строки, который ищем, чтобы в проверке if не выйти за границы строки
+            String str9 = s3.substring(i, i + 3);       // нам нужно +2 р(+и+т), но пишем 3, потому что синтаксис // метода такой (будет возвращать символы до номера индеса -1 от указанного
             if (str9.equalsIgnoreCase("рит")) {
                 System.out.println(i);
             }
         }
+        // Способ Сергея * Правильный!
+        s3 = s3.toLowerCase(); // переводит все в нижний регистр для сравнения
+        int index2 = s3.indexOf("рит");  //возвращает индекс начала первого совпадающего элемента в строке
+        while (index2 != -1) {
+            System.out.println(index2);
+            index2 = s3.indexOf("рит", index2 + 1); //возвращает индекс начала совпадающего элемента в строке, начиная с указанного нами индекса элемента
+        }
+
+
         //4
         // String[][] array = {{“Привет”, “всем”, “кто”}, {“изучает”, “язык”, “программирования”}, {“java”}};
         //необходимо подсчитать количество строк в массиве, которые не содержат буквы “е”.
@@ -125,7 +156,7 @@ public class HW4 {
         int n = 0;
         for (int i = 0; i < array10.length; i = i + 1) {
             for (int j = 0; j < array10[i].length; j = j +1) {
-              if (array10[i][j].contains("е")) {
+              if (!array10[i][j].contains("е")) {
                   n = n + 1;
               }
             }
