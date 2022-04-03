@@ -2,26 +2,6 @@ package HW;
 
 public class HW5 {
 
-    // сложение 2х чисел
-    public static void sum(int a, int b) {
-        System.out.println(a + b);
-    }
-
-    // вычитание 2х чисел
-    public static void sub(int a, int b) {
-        System.out.println(a - b);
-    }
-
-    // умножение 2х чисел
-    public static void mult(int a, int b) {
-        System.out.println(a * b);
-    }
-
-    // деление 2х чисел
-    public static void div(int a, int b) {
-        System.out.println((double) a / b);
-    }
-
     //Задачи №2
     //2.1. You need to double the integer and return it.
     public static int doubleTheInteger(int a) {
@@ -76,20 +56,22 @@ public class HW5 {
         String str1 = "";
         while (i < num) {
             i++;
-            str1 = (str1 + i + " sheep...");
+            //str1 = (str1 + i + " sheep...");
+            str1 += (i + " sheep..."); // с таким оператором запись короче!
         }
         return str1;
     }
 
     public static void main(String[] args) {
 
+        HW5_1 hw = new HW5_1();
         //1
         int a = 5;
         int b = 10;
-        sum(a, b);
-        sub(a, b);
-        mult(a, b);
-        div(a, b);
+        System.out.println(hw.sum(a, b));
+        System.out.println(hw.sub(a, b));
+        System.out.println(hw.mult(a, b));
+        System.out.println(hw.div(a, b));
 
         //2.1
         System.out.println(doubleTheInteger(5));
@@ -122,6 +104,13 @@ public class HW5 {
                 System.out.print(j);
             }
         }
+        //Вариант Сергея - уход от двойной записи длины строки: указывается только в начальном значении i
+        for (int i = 9; i >= 0; i--) {
+            System.out.print("\n");
+            for (int j = 0; j <= i; j++) {
+                System.out.print(j);
+            }
+        }
 
         //5.2.2
         String nSpace = "";
@@ -134,17 +123,43 @@ public class HW5 {
             }
         }
 
-        //5.2.3
+        //по варианту Сергея, где длина строки указывается 1 раз
         String nSpace2 = "";
-        for (int i = 0; i < 10; i++) {
+        for (int i = 9; i >= 0; i--) {
             System.out.print("\n");
             System.out.print(nSpace2);
             nSpace2 = (nSpace2 + " ");
+            for (int j = 0; j <= i; j++) {
+                System.out.print(j);
+            }
+        }
+
+        //вариант Сергея
+        System.out.println();
+        for (int i = 9; i >= 0; i--) {
+            for (int j = i; j < 9; j++) {
+                System.out.print("  ");
+            }
+            for (int j = 0; j <= i; j++) {
+                System.out.print(j);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+
+        //5.2.3
+        String nSpace3 = "";
+        for (int i = 0; i < 10; i++) {
+            System.out.print("\n");
+            System.out.print(nSpace3);
+            nSpace3 = (nSpace3 + "  ");
             for (int j = 9 - i ; j > (-10 + i); j--) {
                 if (j >= 0){
                     System.out.print(j);
+                    System.out.print(" ");
                 } else {
                     System.out.print(-j);
+                    System.out.print(" ");
                 }
             }
         }
