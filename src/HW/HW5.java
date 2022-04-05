@@ -90,7 +90,7 @@ public class HW5 {
         //2.4 Given an array of integers your solution should find the smallest integer.
         //You can assume, for the purpose of this kata, that the supplied array will not be empty.
 
-        int[] arr = {10, 20, -170, -290};
+        int[] arr = {10, 20, -170, -280};
         System.out.println(findSmallestInt(arr));
 
         //2.5
