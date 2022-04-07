@@ -3,7 +3,7 @@ package Lessons;
 public class Person {
 
     //System.out.println("Hello world"); // System - объект .out - поле .println - метод
-    String name = "Ivan";   // поле класса//чаще всего оставляем поля пустыми
+   String name = "Ivan";   // поле класса//чаще всего оставляем поля пустыми
    int age = 10;           //чаще всего оставляем поля пустыми
     //Person person; - может быть и так
 
@@ -13,6 +13,7 @@ public class Person {
     Person(String name, int age) { //название полей и параметров конструктора пишут чаще одинаковыми, чтобы не путаться, но можно и по разному написать
         this.name = name;
         this.age = age;
+
     }
 
     Person(String name) { //название полей и параметров конструктора пишут чаще одинаковыми, чтобы не путаться, но можно и по разному написать
