@@ -41,4 +41,5 @@ public class HW6 {
         System.out.println(salary.getSum(arr));
         //System.out.println(HW6_Salary.sumSalary(new HW6_Salary[]{john, tanya, janna}));  //или вот такая запись
     }
+
 }
